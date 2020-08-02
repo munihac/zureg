@@ -41,8 +41,8 @@ main hackathon =
     Serverless.main IO.stdin IO.stdout $ \req@Serverless.Request {..} ->
         case Serverless.requestPath req of
             ["register"] -> do
-                when (reqHttpMethod == "POST") $
-                    ReCaptcha.verify recaptcha (Serverless.reqBody req)
+                -- when (reqHttpMethod == "POST") $
+                --     ReCaptcha.verify recaptcha (Serverless.reqBody req)
                 (view, mbReg) <- Serverless.runForm req "register" $ D.checkM
                     "Email address already registered"
                     (fmap isNothing . Database.lookupEmail db . riEmail . fst)
@@ -53,7 +53,7 @@ main hackathon =
                 let atCapacity = Database.rsAvailable registrantsSummary <= 0
                 case mbReg of
                     Nothing -> html $
-                        Views.register hackathon (ReCaptcha.clientHtml recaptcha) view
+                        Views.register hackathon (ReCaptcha.ClientHtml mempty mempty {-ReCaptcha.clientHtml recaptcha-}) view
 
                     Just (info, additionalInfo) | atCapacity -> do
                         -- You're on the waitlist
