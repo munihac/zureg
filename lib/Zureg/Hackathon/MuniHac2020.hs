@@ -40,7 +40,7 @@ newHackathon = do
             }
         , Hackathon.reCaptchaConfig = ReCaptcha.Config
             { ReCaptcha.cEnabled   = True
-            , ReCaptcha.cSiteKey   = "6LcVUm8UAAAAAL0ooPLkNT3O9oEXhGPK6kZ-hQk7"
+            , ReCaptcha.cSiteKey   = "6Lcmk7wZAAAAAKMmP6sKNvd5gVI8aGaMrWjE3JkZ"
             , ReCaptcha.cSecretKey = reCaptchaSecret
             }
         , Hackathon.scannerSecret = scannerSecret
