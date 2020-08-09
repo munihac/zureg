@@ -29,8 +29,7 @@ data ExpertiseLevel = Beginner | Advanced
     deriving (Bounded, Enum, Eq, Show)
 
 data RegisterInfo = RegisterInfo
-    { riAskMeAbout     :: !(Maybe T.Text)
-    , riRegion         :: !(Maybe Region)
+    { riRegion         :: !(Maybe Region)
     , riExpertiseLevel :: !(Maybe ExpertiseLevel)
     } deriving (Eq, Show)
 
@@ -46,8 +45,7 @@ instance Csv.ToField Region where
 
 instance Csv.ToNamedRecord RegisterInfo where
     toNamedRecord RegisterInfo {..}
-        = namedRecord [ "AskMeAbout"         .= riAskMeAbout
-                      , "Region"             .= riRegion
+        = namedRecord [ "Region"             .= riRegion
                       , "Expertise Level"    .= riExpertiseLevel
                       ]
 
@@ -60,7 +58,6 @@ csvHeader = Csv.header
     , "Name on Badge"
     , "Email"
     , "Affiliation"
-    , "AskMeAbout"
     , "Region"
     , "Expertise Level"
     , "Registered At"
