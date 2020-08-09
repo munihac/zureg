@@ -25,6 +25,7 @@ newHackathon = do
         , Hackathon.baseUrl = "https://zureg.zfoh.ch"
         , Hackathon.contactUrl = "https://zfoh.ch/zurihac2020/#contact"
         , Hackathon.slackUrl = "https://slack.zurihac.info/"
+        , Hackathon.legalNoticeUrl = Nothing
         , Hackathon.capacity = 800
         , Hackathon.confirmation = False
 

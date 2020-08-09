@@ -95,8 +95,16 @@ template head' body = H.docTypeHtml $ do
 
 register :: Hackathon a -> ReCaptcha.ClientHtml -> D.View H.Html -> H.Html
 register hackathon recaptcha view =
-    template (ReCaptcha.chScript recaptcha) $
-    Form.registerView hackathon recaptcha view
+    template (ReCaptcha.chScript recaptcha) $ do
+        Form.registerView hackathon recaptcha view
+        legalNotice hackathon
+
+legalNotice :: Hackathon a -> H.Html
+legalNotice h = whenJust (Hackathon.legalNoticeUrl h) $ \url -> do
+    H.br
+    H.small $ H.a
+        H.! A.href (H.textValue url)
+        $ "Legal Notice / Impressum"
 
 registerSuccess :: E.UUID -> RegisterInfo -> H.Html
 registerSuccess _uuid RegisterInfo {..} = template mempty $ do

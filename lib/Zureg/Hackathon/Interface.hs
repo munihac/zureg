@@ -21,6 +21,8 @@ data Hackathon a = Hackathon
     -- | Slack URL, e.g. "https://slack.zurihac.info/"
     , slackUrl        :: T.Text
     -- | Total capacity of the event
+    , legalNoticeUrl  :: Maybe T.Text
+    -- | Legal Notice (Impressum), legally required in Germany
     , capacity        :: Int
     -- | When 'True', registrants can/must confirm their registration.
     , confirmation    :: Bool
