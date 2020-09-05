@@ -1,0 +1,57 @@
+Hello {{info.name}},
+
+MuniHac is coming up soon!
+
+With just one week to go, we'd like to give you some updates about how MuniHac
+is going to be organized this year.
+
+# Programme
+
+The preliminary programme for MuniHac 2020 is now online. Friday, September 11
+at 11:30 CEST, we will start off two days packed with talks, workshops and
+Haskell hacking.
+
+The programme can be found on the MuniHac website, https://munihac.de/2020.html
+Please note that all times are CEST (UTC +2).
+
+# Communication Channels
+
+All talks and workshops will be held via zoom.us, so installing a client or
+making otherwise sure that you can join Zoom calls is a good idea. Additionally,
+all talks will be streamed on Youtube. There'll be an overview over all Zoom
+conferences and Youtube streams on the day of the conference.
+
+In addition, we will use Slack for asynchronous communication. If you haven't
+yet, register at
+
+    https://join.slack.com/t/munihac/shared_invite/zt-gaq3veyb-u3j9F0LqN0Q60Zc2MVqvSw
+
+and join the #munihac-2020 channel, where you can meet up with other guests. For
+questions and discussion on individual talks and workshops, we'll have dedicated
+Slack channels for each session.
+
+# Projects
+
+Although the focus this year is more on workshops and talks, MuniHac would not
+be a proper Haskell hackathon without some hacking sessions. We've reserved a
+few Zoom rooms for you to get together and hack on projects, so if you want to
+host a project at MuniHac 2020, just get in touch with us at
+munihac@tngtech.com! We'll create a Zoom session and slack channel for you, and
+publish them so people can join you for your project.
+
+# More Info
+
+More detailed information on the programme and speakers is on the MuniHac
+website:
+
+    https://munihac.de/2020.html
+
+If you have any questions, feel free to contact us via email
+(munihac@tngtech.com), or on Slack!
+
+Looking forward to seeing you online at MuniHac 2020!
+— The MuniHac 2020 organisers
+    Franz Thoma
+    Andres Löh
+    Alexander Lehmann
+    David Luposchainsky
