@@ -51,8 +51,8 @@ website:
 
     https://munihac.de/2020.html
 
-If you have any questions, feel free to contact us via email
-(munihac@tngtech.com), or on Slack!
+If you have any questions, feel free to contact us on Slack in the #support
+channel!
 
 Looking forward to seeing you online at MuniHac 2020!
 — The MuniHac 2020 organisers

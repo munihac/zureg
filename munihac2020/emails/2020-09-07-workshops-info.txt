@@ -1,0 +1,55 @@
+Hello {{info.name}},
+
+If you are planning to join one of the workshops at MuniHac 2020, you can
+already connect with speakers and other participants. We've created Slack
+channels for all workshops, so join the ones you're interested in and learn
+about prerequisites and preparation!
+
+If you haven't yet, join us on Slack:
+
+    https://join.slack.com/t/munihac/shared_invite/zt-gaq3veyb-u3j9F0LqN0Q60Zc2MVqvSw
+
+If you have any questions, feel free to contact us in the #support channel!
+
+# Workshop Slack channels:
+
+* "Miso: Haskell in the front-end" (Alejandro Serrano)
+  #alejandro-serrano-miso
+  https://munihac.slack.com/archives/C019ZBTN3QE
+
+* "Liquid Haskell" (Andres Löh)
+  #andres-loeh-liquid-haskell
+  https://munihac.slack.com/archives/C019ZBTN3QE
+
+* "Beginners Workshop" (David Luposchainsky)
+  #david-luposchainsky-beginners-workshop
+  https://munihac.slack.com/archives/C01AVUNUT0Q
+
+* "Video & game live coding in Haskell" (Manuel Bärenz)
+  #manuel-baerenz-live-coding
+  https://munihac.slack.com/archives/C01A6B909HQ
+
+* "Building a RISC-V SoC with Haskell and Python" (Christiaan Baaij)
+  #christiaan-baaij-clash
+  href: https://munihac.slack.com/archives/C01A6HGMMSP
+
+* "Let's write a Haskell Language Server Plugin" (Pepe Iborra)
+  #pepe-iborra-language-server-plugins
+  https://munihac.slack.com/archives/C01AK0B6K7T
+
+* "Control your Effects" (Michael Sperber)
+  #michael-sperber-effects
+  https://munihac.slack.com/archives/C01AW6QUTDE
+
+* "Introduction to Opaleye" (Tom Ellis)
+  #tom-ellis-opaleye
+  href: https://munihac.slack.com/archives/C01ACGZ6T7E
+
+And by the way, Slack channels for talks will follow the same naming scheme.
+
+Looking forward to seeing you online at MuniHac 2020!
+— The MuniHac 2020 organisers
+    Franz Thoma
+    Andres Löh
+    Alexander Lehmann
+    David Luposchainsky
