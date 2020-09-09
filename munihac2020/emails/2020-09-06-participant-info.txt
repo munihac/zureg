@@ -2,7 +2,7 @@ Hello {{info.name}},
 
 MuniHac is coming up soon!
 
-With just one week to go, we'd like to give you some updates about how MuniHac
+With just two days to go, we'd like to give you some updates about how MuniHac
 is going to be organized this year.
 
 # Programme
@@ -39,9 +39,9 @@ and join the #munihac-2020 channel, where you can meet up with other guests.
 
 Although the focus this year is more on workshops and talks, MuniHac would not
 be a proper Haskell hackathon without some hacking sessions. We've reserved a
-few Zoom rooms for you to get together and hack on projects, so if you want to
-host a project at MuniHac 2020, just get in touch with us at
-munihac@tngtech.com! We'll create a Zoom session and slack channel for you, and
+bunch of Zoom rooms for you to get together and hack on projects. So if you want
+to host a project at MuniHac 2020, just get in touch with us via the #support
+channel on Slack! We'll create a Zoom session and slack channel for you, and
 publish them so people can join you for your project.
 
 # More Info
