@@ -1,0 +1,72 @@
+Hello {{info.name}},
+
+MuniHac 2020 is taking place tomorrow!
+
+Here's what we've prepared:
+
+# How to join
+
+The entire programme for each day can be found on
+
+    https://join.munihac.de
+
+From there, you can directly join the corresponding Zoom sessions, join the
+Slack channels for questions and discussion, or simply watch the Youtube live
+stream.
+
+We have been quite liberal with time in between talks, and there are break rooms
+available to establish a virtual hallway track. You can join a random break
+room, or look for people you want to connect with.
+
+In addition, we have dedicated Zoom sessions for hacking on projects. If you
+want to host a project, let us know in the #support channel on Slack! Then we
+can open a session for you and list it on the programme.
+
+# Tools and how to use them
+
+More than 250 Haskellers have registered for MuniHac! We're glad so many of you
+are going to join us, however for things to go smoothly, there are a few
+guidelines:
+
+## Zoom
+
+* To participate in a talk or workshop, just join the corresponding Zoom
+  session.
+* For projects, use Zoom for mob or pair programming. Just join the session and
+  have a look around. If no-one happens to be in the session (maybe they're just
+  visiting a talk or workshop?), just let them know in the project Slack channel
+  that you're interested in joining.
+* For the breaks and the evening get-together, additional Zoom sessions are
+  available. If you just want to meet new people, you can just join a random
+  session.
+
+## Slack
+
+Our main medium for textual communication will be Slack, so make sure you're
+signed up:
+
+    https://join.slack.com/t/munihac/shared_invite/zt-gaq3veyb-u3j9F0LqN0Q60Zc2MVqvSw
+
+* Use Slack to get in touch with other participants.
+* For talks and workshops, asking questions on the dedicated Slack channels is
+  encouraged. We have Track Managers watching these channels, so your Questions
+  won't get lost. (That is, of course, unless the speaker says otherwise.)
+* For projects, Slack is also the default way to get in touch.
+
+The #munihac-2020 channel will be used for announcements, so make sure to join!
+For getting in touch with the organisers, we have the #support channel which we
+will monitor.
+
+## Youtube
+
+* Most talks and workshops are also streamed on Youtube. If you just want to
+  listen, that's perfectly fine.
+* You can still use Slack to ask questions!
+
+Looking forward to seeing you tomorrow!
+— The MuniHac 2020 organisers
+    Franz Thoma
+    Andres Löh
+    Alexander Lehmann
+    David Luposchainsky
+    Tim Baumann
