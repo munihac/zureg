@@ -1,49 +1,45 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Zureg.Hackathon.ZuriHac2021
+module Zureg.Hackathon.ZuriHac2022
     ( newHackathon
     ) where
 
 import qualified Data.Text                           as T
 import           System.Environment                  (getEnv)
 import qualified Text.Blaze.Html5                    as H
-import qualified Zureg.Captcha.ReCaptcha             as ReCaptcha
 import qualified Zureg.Database                      as Database
 import           Zureg.Hackathon.Interface           (Hackathon)
 import qualified Zureg.Hackathon.Interface           as Hackathon
 import           Zureg.Hackathon.ZuriHac2020.Discord as Discord
-import           Zureg.Hackathon.ZuriHac2021.Form    as ZH21
-import           Zureg.Hackathon.ZuriHac2021.Model   as ZH21
+import           Zureg.Hackathon.ZuriHac2022.Form    as ZH22
+import           Zureg.Hackathon.ZuriHac2022.Model   as ZH22
+import           Zureg.Hackathon.ZuriHac2022.Views   as ZH22
+import qualified Zureg.Captcha.HCaptcha              as HCaptcha
 import qualified Zureg.SendEmail                     as SendEmail
 
 newHackathon :: IO (Hackathon RegisterInfo)
 newHackathon = do
     scannerSecret   <- T.pack <$> getEnv "ZUREG_SCANNER_SECRET"
     email           <- T.pack <$> getEnv "ZUREG_EMAIL"
+    captcha         <- HCaptcha.configFromEnv >>= HCaptcha.new
 
     discord <- Discord.configFromEnv
     channel <- Discord.getWelcomeChannelId discord
 
-    reCaptchaSecret <- T.pack <$> getEnv "ZUREG_RECAPTCHA_SECRET"
-    captcha         <- ReCaptcha.new ReCaptcha.Config
-        { ReCaptcha.cSiteKey   = "6LcVUm8UAAAAAL0ooPLkNT3O9oEXhGPK6kZ-hQk7"
-        , ReCaptcha.cSecretKey = reCaptchaSecret
-        }
-
     return Hackathon.Hackathon
-        { Hackathon.name = "ZuriHac 2021"
+        { Hackathon.name = "ZuriHac 2022"
         , Hackathon.baseUrl = "https://zureg.zfoh.ch"
-        , Hackathon.contactUrl = "https://zfoh.ch/zurihac2021/#contact"
-        , Hackathon.capacity = 3000
-        , Hackathon.confirmation = False
+        , Hackathon.contactUrl = "https://zfoh.ch/zurihac2022/#contact"
+        , Hackathon.capacity = 500
+        , Hackathon.confirmation = True
 
         , Hackathon.registerBadgeName = False
         , Hackathon.registerAffiliation = False
 
-        , Hackathon.registerForm = ZH21.additionalInfoForm
-        , Hackathon.registerView = ZH21.additionalInfoView
+        , Hackathon.registerForm = ZH22.additionalInfoForm
+        , Hackathon.registerView = ZH22.additionalInfoView
         , Hackathon.ticketView = mempty
-        , Hackathon.scanView = mempty
-        , Hackathon.csvHeader = ZH21.csvHeader
+        , Hackathon.scanView = ZH22.scanView
+        , Hackathon.csvHeader = ZH22.csvHeader
 
         , Hackathon.databaseConfig = Database.defaultConfig
         , Hackathon.sendEmailConfig = SendEmail.Config
@@ -53,7 +49,6 @@ newHackathon = do
         , Hackathon.scannerSecret = scannerSecret
         , Hackathon.chatUrl = Discord.generateTempInviteUrl discord channel
         , Hackathon.chatExplanation = H.p $ do
-            "ZuriHac 2021 will take place as an online event.  To "
-            "coordinate the hackathon, we use Discord as a chat and voice "
-            "platform.  You can join the Discord server here:"
+            "ZuriHac 2022 will use Discord as a chat platform for "
+            "coordination.  You can join the Discord server here:"
         }
