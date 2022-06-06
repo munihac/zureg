@@ -24,7 +24,6 @@ newHackathon = do
         { Hackathon.name = "MuniHac 2020"
         , Hackathon.baseUrl = "https://registration.munihac.de"
         , Hackathon.contactUrl = "https://munihac.de/2020.html#contact"
-        , Hackathon.slackUrl = "https://join.slack.com/t/munihac/shared_invite/zt-gaq3veyb-u3j9F0LqN0Q60Zc2MVqvSw"
         , Hackathon.legalNoticeUrl = Just "https://munihac.de/impressum.html"
         , Hackathon.capacity = 300
         , Hackathon.confirmation = False
@@ -45,4 +44,6 @@ newHackathon = do
             , ReCaptcha.cSecretKey = reCaptchaSecret
             }
         , Hackathon.scannerSecret = scannerSecret
+        , Hackathon.chatUrl = pure "https://join.slack.com/t/munihac/shared_invite/zt-gaq3veyb-u3j9F0LqN0Q60Zc2MVqvSw"
+        , Hackathon.chatExplanation = mempty
         }

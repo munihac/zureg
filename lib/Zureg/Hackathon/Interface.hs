@@ -18,8 +18,6 @@ data Hackathon a = Hackathon
     , baseUrl         :: T.Text
     -- | URL of the contact homepage, e.g. "https://zfoh.ch/zurihac2019/#contact"
     , contactUrl      :: T.Text
-    -- | Slack URL, e.g. "https://slack.zurihac.info/"
-    , slackUrl        :: T.Text
     -- | Total capacity of the event
     , legalNoticeUrl  :: Maybe T.Text
     -- | Legal Notice (Impressum), legally required in Germany
@@ -46,4 +44,9 @@ data Hackathon a = Hackathon
     , reCaptchaConfig :: ReCaptcha.Config
     -- | Secret for the scanner
     , scannerSecret   :: T.Text
+
+    -- | Explaining paragraph about the chat.
+    , chatExplanation :: H.Html
+    -- | Produce an URL to join the chat, e.g. a Slack link or a Discord invite.
+    , chatUrl         :: IO T.Text
     }
