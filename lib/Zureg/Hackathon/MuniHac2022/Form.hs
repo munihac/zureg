@@ -6,6 +6,7 @@ module Zureg.Hackathon.MuniHac2022.Form
 
 import qualified Data.Text                         as T
 import qualified Text.Blaze.Html5                  as H
+import qualified Text.Blaze.Html5.Attributes       as A
 import qualified Text.Digestive                    as D
 import qualified Text.Digestive.Blaze.Html5        as DH
 import           Zureg.Hackathon.MuniHac2022.Model as MH22
@@ -29,7 +30,7 @@ additionalInfoView view = do
     H.h2 "Optional information"
     DH.label "askMeAbout" view $ H.strong "Ask me about"
     H.p $ do
-        "Topic(s) that you want to talk about with outhers.  It's a good ice "
+        "Topic(s) that you want to talk about with others.  It's a good ice "
         "breaker for people who want to chat with you."
     DH.inputText "askMeAbout" view
     H.br
@@ -41,6 +42,6 @@ additionalInfoView view = do
     H.br
 
     H.p $ H.strong "Announcements for future MuniHacs"
-    DH.label "keepMePosted" view $
-        "Should we send you an email announcing next year's MuniHac?"
-    DH.inputCheckbox "keepMePosted" view
+    H.p "Should we send you an email announcing next year's MuniHac?"
+    DH.inputCheckbox "keepMePosted" view H.! A.class_ "checkbox"
+    DH.label "keepMePosted" view "Yes, please!"
