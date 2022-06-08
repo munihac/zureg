@@ -32,7 +32,7 @@ build/zureg-lambda.zip: build/bin/zureg-web deploy/main.py deploy/env.json
 
 # This is a text file with the name of the docker image.  We do things this way
 # to make the Makefile dependency tracking work.
-build/image.txt: Dockerfile
+build/image.txt: Dockerfile $(SOURCES)
 	mkdir -p build
 	docker build -m 4GB -t zureg .
 	echo "zureg" >$@
