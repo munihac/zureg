@@ -7,6 +7,7 @@ module Zureg.Hackathon.MuniHac2022.Model
     ( TShirtInfo (..)
     , TShirtCut (..)
     , TShirtSize (..)
+    , FoodPreference (..)
     , Region (..)
     , ExpertiseLevel (..)
     , Project (..)
@@ -58,8 +59,12 @@ data Project = Project
     , pContributorLevel :: !ContributorLevel
     } deriving (Eq, Show)
 
+data FoodPreference = Vegetarian | Vegan
+    deriving (Eq, Show)
+
 data RegisterInfo = RegisterInfo
     { riTShirt         :: !(Maybe TShirtInfo)
+    , riFoodPreference :: !(Maybe FoodPreference)
     , riExpertiseLevel :: !(Maybe ExpertiseLevel)
     , riAskMeAbout     :: !(Maybe T.Text)
     , riRegion         :: !(Maybe Region)
@@ -74,6 +79,7 @@ $(A.deriveJSON A.options ''Region)
 $(A.deriveJSON A.options ''ExpertiseLevel)
 $(A.deriveJSON A.options ''ContributorLevel)
 $(A.deriveJSON A.options ''Project)
+$(A.deriveJSON A.options ''FoodPreference)
 $(A.deriveJSON A.options ''RegisterInfo)
 
 instance Csv.ToField TShirtCut where
@@ -87,6 +93,9 @@ instance Csv.ToNamedRecord (Maybe TShirtInfo) where
         namedRecord [ "T-Shirt Cut"  .= (tsiCut <$> mbTi)
                     , "T-Shirt Size" .= (tsiSize <$> mbTi)
                     ]
+
+instance Csv.ToField FoodPreference where
+    toField = toField . show
 
 instance Csv.ToNamedRecord Project where
     toNamedRecord Project {..}
@@ -117,6 +126,7 @@ instance Csv.ToNamedRecord RegisterInfo where
                 [ "AskMeAbout" .= riAskMeAbout
                 , "Expertise Level" .= riExpertiseLevel
                 , "Region" .= riRegion
+                , "Food Preference" .= riFoodPreference
                 ]
             , toNamedRecord riProject
             , toNamedRecord riTShirt
@@ -143,4 +153,5 @@ csvHeader = Csv.header
     , "Registered At"
     , "T-Shirt Cut"
     , "T-Shirt Size"
+    , "Food Preference"
     ]

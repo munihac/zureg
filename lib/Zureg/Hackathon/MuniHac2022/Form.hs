@@ -23,6 +23,12 @@ additionalInfoForm = RegisterInfo
                     [(Just s, H.toHtml $ show s) | s <- [minBound .. maxBound]] ++
                     [(Nothing, "I don't want a T-Shirt")])
                     (Just (Just M))))
+    <*> "foodPreference" D..: D.choice
+            [ (Nothing, "None")
+            , (Just Vegetarian, "I prefer vegetarian food")
+            , (Just Vegan, "I prefer vegan food")
+            ]
+            (Just Nothing)
     <*> "expertiseLevel" D..: D.choice
             [ (Nothing, "I'd rather not say")
             , (Just Beginner, "I've just started learning Haskell")
@@ -62,6 +68,10 @@ additionalInfoView view = do
     H.br
     DH.label "tshirt.size" view "Size"
     DH.inputSelect "tshirt.size" view
+    H.br
+
+    H.p $ H.strong "Food Preferences"
+    DH.inputSelect "foodPreference" view
     H.br
 
     H.p $ H.strong "Your Level of Expertise"
