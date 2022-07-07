@@ -4,6 +4,7 @@ module Zureg.Hackathon.MuniHac2022
     ) where
 
 import qualified Data.Text                         as T
+import qualified Text.Blaze.Html5                  as H
 import           System.Environment                (getEnv)
 import qualified Zureg.Captcha.ReCaptcha           as ReCaptcha
 import qualified Zureg.Database                    as Database
@@ -47,6 +48,6 @@ newHackathon = do
             }
         , Hackathon.captcha = captcha
         , Hackathon.scannerSecret = scannerSecret
+        , Hackathon.chatExplanation = H.p "You can join the MuniHac Slack instance here:"
         , Hackathon.chatUrl = pure "https://join.slack.com/t/munihac/shared_invite/zt-gaq3veyb-u3j9F0LqN0Q60Zc2MVqvSw"
-        , Hackathon.chatExplanation = mempty
         }

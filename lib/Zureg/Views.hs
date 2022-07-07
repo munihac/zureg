@@ -163,7 +163,7 @@ ticket hackathon Registrant {..} = template
                 H.input H.! A.type_ "hidden" H.! A.name "uuid"
                     H.! A.value (H.toValue (E.uuidToText rUuid))
                 H.input H.! A.type_ "submit"
-                    H.! A.value "Generate Discord invite"
+                    H.! A.value "Join MuniHac on Slack"
 
         unless (rState == Just Cancelled) $ do
             H.p $ do
