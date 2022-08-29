@@ -30,8 +30,8 @@ newHackathon = do
         , Hackathon.baseUrl = "https://registration.munihac.de"
         , Hackathon.contactUrl = "https://munihac.de/2022.html#contact"
         , Hackathon.legalNoticeUrl = Just "https://munihac.de/impressum.html"
-        , Hackathon.capacity = 100
-        , Hackathon.confirmation = False
+        , Hackathon.capacity = 180
+        , Hackathon.confirmation = True
 
         , Hackathon.registerBadgeName = True
         , Hackathon.registerAffiliation = True
