@@ -1,0 +1,39 @@
+Hello {{info.name}},
+
+three weeks to go for MuniHac 2022! Here's some more updates and organizational
+stuff:
+
+# Programme and schedule
+
+    https://munihac.de/2022.html#schedule
+
+    While the main focus of MuniHac is in getting together and hacking on
+    projects, we are also happy to provide a line-up of three keynotes, five
+    talks, and four workshops!
+
+    You can find the preliminary schedule on the MuniHac website. There might be
+    some updates in the next weeks, so be sure to check again before the event!
+
+# Venue
+
+    MuniHac 2022 will take place at the TNG Technoloy Consulting offices,
+    Arabellastraße 4, Munich. (This is a new venue compared to 2019 and before!)
+
+    The venue can be reached easily via Metro (U4 Arabellapark) as well as Bus
+    and Tram (Effnerplatz).
+
+# Communication
+
+    As in the last years, you can use our Slack space for communicating with
+    other attendees. If you haven't done yet, please subscribe to the
+    #munihac-2022 channel for announcements! If you don't have an account yet,
+    you can create one via this invite link:
+
+    https://join.slack.com/t/munihac/shared_invite/zt-gaq3veyb-u3j9F0LqN0Q60Zc2MVqvSw
+
+We're looking forward to seeing you in Munich!
+
+On behalf of the MuniHac organisers,
+    Franz Thoma
+    Andres Löh
+    Alexander Lehmann
