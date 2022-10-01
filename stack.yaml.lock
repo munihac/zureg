@@ -12,6 +12,13 @@ packages:
   original:
     hackage: amazonka-1.6.1
 - completed:
+    hackage: cairo-0.13.8.1@sha256:1938aaeb5d3504678d995774dfe870f6b66cbd43d336b692fa8779b23b2b67a9,4075
+    pantry-tree:
+      size: 2830
+      sha256: 8f6344da4c578a4dd3a49c333e2158b695bfae32a74d34a76bbc6e531b70c95c
+  original:
+    hackage: cairo-0.13.8.1
+- completed:
     hackage: digestive-functors-0.8.4.2@sha256:badff1797b6dcd860a48ed4558985b2f6bec501e1016fa5afd9d7d6b0d8e4c08,3364
     pantry-tree:
       size: 1682
@@ -32,6 +39,13 @@ packages:
       sha256: 6e9cf49ee8117536f28933ef2a6027da691bb6ab00f1ab5d786b207398611460
   original:
     hackage: eventful-dynamodb-0.2.0
+- completed:
+    hackage: gtk2hs-buildtools-0.13.8.2@sha256:01c4a6cc3679008bd4caec32b49843acb27a5f48ee2b22484218f097835548f6,5238
+    pantry-tree:
+      size: 3588
+      sha256: 1c3b449a69f4bb2d27c09a89e447552a58201a3febf5418e67af0001a0cbb0a7
+  original:
+    hackage: gtk2hs-buildtools-0.13.8.2
 - completed:
     hackage: hal-1.0.0.1@sha256:0d7706c8c9341aeca7b50dc60d66ebb32f28259d8afc3f555a7dc3a651f08f3d,4761
     pantry-tree:
