@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
 module Zureg.Hackathon.MuniHac2022
     ( newHackathon
     ) where
@@ -10,11 +11,12 @@ import qualified Zureg.Captcha.ReCaptcha           as ReCaptcha
 import qualified Zureg.Database                    as Database
 import           Zureg.Hackathon.Interface         (Hackathon)
 import qualified Zureg.Hackathon.Interface         as Hackathon
-import           Zureg.Hackathon.MuniHac2022.Form  as MH22
-import           Zureg.Hackathon.MuniHac2022.Model as MH22
+import qualified Zureg.Hackathon.MuniHac2022.Form  as MH22
+import qualified Zureg.Hackathon.MuniHac2022.Model as MH22
+import           Zureg.Model
 import qualified Zureg.SendEmail                   as SendEmail
 
-newHackathon :: IO (Hackathon RegisterInfo)
+newHackathon :: IO (Hackathon MH22.RegisterInfo)
 newHackathon = do
     scannerSecret   <- T.pack <$> getEnv "ZUREG_SCANNER_SECRET"
     email           <- T.pack <$> getEnv "ZUREG_EMAIL"
@@ -39,7 +41,13 @@ newHackathon = do
         , Hackathon.registerForm = MH22.additionalInfoForm
         , Hackathon.registerView = MH22.additionalInfoView
         , Hackathon.ticketView = mempty
-        , Hackathon.scanView = mempty
+        , Hackathon.scanView = \Registrant {..} -> case rAdditionalInfo of
+            Nothing                -> mempty
+            Just MH22.RegisterInfo {..} -> case riTShirt of
+                Nothing                   -> "No T-Shirt"
+                Just MH22.TShirtInfo {..} -> do
+                    "T-Shirt size: "
+                    H.strong $ H.toHtml (show tsiSize)
         , Hackathon.csvHeader = MH22.csvHeader
 
         , Hackathon.databaseConfig = Database.defaultConfig
