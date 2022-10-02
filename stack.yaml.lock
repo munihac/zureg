@@ -67,6 +67,31 @@ packages:
       sha256: dc94e84bac66430bca207639fc8a2f1a37a88834c8f6572a0345f70298d6d0d1
   original:
     hackage: urlencoded-0.5.0.0
+- completed:
+    name: svgcairo
+    version: 0.13.2.1
+    git: https://github.com/dalpd/svgcairo
+    pantry-tree:
+      size: 758
+      sha256: 80e73cf62b0e8638fca49acab68a9c8c2e3403ccabcc3dbb98e0c1ff4576399d
+    commit: d1e0d7ae04c1edca83d5b782e464524cdda6ae85
+  original:
+    git: https://github.com/dalpd/svgcairo
+    commit: d1e0d7ae04c1edca83d5b782e464524cdda6ae85
+- completed:
+    hackage: Cabal-3.0.2.0@sha256:caadad83e044cdd38770600fd380055ad1a8c87d454b1f9d0710c14834f8cbc2,27486
+    pantry-tree:
+      size: 40207
+      sha256: 49c8fe9e4538bd5cbd1e8132d918374ea6cd34648a5aaf0c4b0d68989d5dda1d
+  original:
+    hackage: Cabal-3.0.2.0
+- completed:
+    hackage: glib-0.13.8.1@sha256:42670daf0c85309281e08ba8559df75daa2e3be642e79fdfa781bef5e59658b0,3156
+    pantry-tree:
+      size: 1625
+      sha256: 1167575db8823b7a9f5fbaebdbc0ea5cef54301e442754ec256ba9371bd388e7
+  original:
+    hackage: glib-0.13.8.1
 snapshots:
 - completed:
     size: 586286

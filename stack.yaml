@@ -11,6 +11,12 @@ extra-deps:
 - 'qrcode-0.1.2'
 - 'unliftio-core-0.1.2.0'
 - 'urlencoded-0.5.0.0'
+- git: https://github.com/dalpd/svgcairo
+  commit: d1e0d7ae04c1edca83d5b782e464524cdda6ae85
+- Cabal-3.0.2.0
+- glib-0.13.8.1
 nix:
   packages:
   - 'zlib'
+  - 'pkgconfig'
+  - 'librsvg'
