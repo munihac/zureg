@@ -7,76 +7,101 @@ packages:
 - completed:
     hackage: amazonka-1.6.1@sha256:f58b63e83876f93aa03c54e54b3eb8ba9358af93819d41f4a5a8f8b7d8b8399c,3544
     pantry-tree:
-      size: 992
       sha256: d792656a70ee42df262a599bc6608bda069e33092d665c3438a6eeeaf7db4fb2
+      size: 992
   original:
     hackage: amazonka-1.6.1
 - completed:
     hackage: cairo-0.13.8.1@sha256:1938aaeb5d3504678d995774dfe870f6b66cbd43d336b692fa8779b23b2b67a9,4075
     pantry-tree:
-      size: 2830
       sha256: 8f6344da4c578a4dd3a49c333e2158b695bfae32a74d34a76bbc6e531b70c95c
+      size: 2830
   original:
     hackage: cairo-0.13.8.1
 - completed:
     hackage: digestive-functors-0.8.4.2@sha256:badff1797b6dcd860a48ed4558985b2f6bec501e1016fa5afd9d7d6b0d8e4c08,3364
     pantry-tree:
-      size: 1682
       sha256: 53ce82c7f0c60c10009b1b764b537117a4ab402bbe1a147fba5ad2263acb3025
+      size: 1682
   original:
     hackage: digestive-functors-0.8.4.2
 - completed:
     hackage: digestive-functors-blaze-0.6.2.0@sha256:3aae259265b8517fb7efe2a7681d846e01f52c22f49f193aff550a1630f182d0,841
     pantry-tree:
-      size: 289
       sha256: 2584d35cf054e3daa2f961d7b68e1c0bafd68f99284c4e76509fc455a0380315
+      size: 289
   original:
     hackage: digestive-functors-blaze-0.6.2.0
 - completed:
     hackage: eventful-dynamodb-0.2.0@sha256:b217f7c588b1a807189fee2b676a809c63895f83d985e8c294bb31358b1ed2ec,1723
     pantry-tree:
-      size: 488
       sha256: 6e9cf49ee8117536f28933ef2a6027da691bb6ab00f1ab5d786b207398611460
+      size: 488
   original:
     hackage: eventful-dynamodb-0.2.0
 - completed:
     hackage: gtk2hs-buildtools-0.13.8.2@sha256:01c4a6cc3679008bd4caec32b49843acb27a5f48ee2b22484218f097835548f6,5238
     pantry-tree:
-      size: 3588
       sha256: 1c3b449a69f4bb2d27c09a89e447552a58201a3febf5418e67af0001a0cbb0a7
+      size: 3588
   original:
     hackage: gtk2hs-buildtools-0.13.8.2
 - completed:
     hackage: hal-1.0.0.1@sha256:0d7706c8c9341aeca7b50dc60d66ebb32f28259d8afc3f555a7dc3a651f08f3d,4761
     pantry-tree:
-      size: 2449
       sha256: 39cedd2a95379083b02934b19899da8d598dbdf12114785516d4bf38feda42e4
+      size: 2449
   original:
     hackage: hal-1.0.0.1
 - completed:
     hackage: unliftio-core-0.1.2.0@sha256:b0a7652ffce2284a6cebe05c99eb60573a8fb6631163f34b0b30a80b4a78cb23,1081
     pantry-tree:
-      size: 328
       sha256: 9d970bf5f98e68e8fc129b04d6c9d8eb1e641c7556ffd0f0a168a259335b6fd7
+      size: 328
   original:
     hackage: unliftio-core-0.1.2.0
 - completed:
     hackage: urlencoded-0.5.0.0@sha256:f680404576eac728a33551c88c049cdd68ed49fc12b1651ccb580dc20e483a97,1856
     pantry-tree:
-      size: 328
       sha256: dc94e84bac66430bca207639fc8a2f1a37a88834c8f6572a0345f70298d6d0d1
+      size: 328
   original:
     hackage: urlencoded-0.5.0.0
 - completed:
     hackage: wai-handler-hal-0.3.0.0@sha256:7a0510f868b332bc14baf097c802979e0ae8ed5c999d359e42a6417afdccff55,2900
     pantry-tree:
-      size: 594
       sha256: 26e9c89686d0e7f60e92e8bd6fc20138fa362a8ec9c4f28c3f58a0a6e49555ec
+      size: 594
   original:
     hackage: wai-handler-hal-0.3.0.0
+- completed:
+    commit: fd25143acd56e9a2c5af9eea3774dac7fe3936c1
+    git: https://github.com/fmthoma/svgcairo
+    name: svgcairo
+    pantry-tree:
+      sha256: 25c1e57a822a9540ea768621eed80120ce56c278c69e90ed036bee0bae08b89f
+      size: 758
+    version: 0.13.2.1
+  original:
+    commit: fd25143acd56e9a2c5af9eea3774dac7fe3936c1
+    git: https://github.com/fmthoma/svgcairo
+- completed:
+    hackage: Cabal-3.0.2.0@sha256:caadad83e044cdd38770600fd380055ad1a8c87d454b1f9d0710c14834f8cbc2,27486
+    pantry-tree:
+      sha256: 49c8fe9e4538bd5cbd1e8132d918374ea6cd34648a5aaf0c4b0d68989d5dda1d
+      size: 40207
+  original:
+    hackage: Cabal-3.0.2.0
+- completed:
+    hackage: glib-0.13.8.1@sha256:42670daf0c85309281e08ba8559df75daa2e3be642e79fdfa781bef5e59658b0,3156
+    pantry-tree:
+      sha256: 1167575db8823b7a9f5fbaebdbc0ea5cef54301e442754ec256ba9371bd388e7
+      size: 1625
+  original:
+    hackage: glib-0.13.8.1
 snapshots:
 - completed:
+    sha256: cdead65fca0323144b346c94286186f4969bf85594d649c49c7557295675d8a5
     size: 586286
     url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/16.yaml
-    sha256: cdead65fca0323144b346c94286186f4969bf85594d649c49c7557295675d8a5
   original: lts-18.16

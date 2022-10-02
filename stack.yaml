@@ -12,6 +12,12 @@ extra-deps:
 - 'unliftio-core-0.1.2.0'
 - 'urlencoded-0.5.0.0'
 - 'wai-handler-hal-0.3.0.0'
+- git: https://github.com/fmthoma/svgcairo
+  commit: fd25143acd56e9a2c5af9eea3774dac7fe3936c1
+- Cabal-3.0.2.0
+- glib-0.13.8.1
 nix:
   packages:
   - 'zlib'
+  - 'pkgconfig'
+  - 'librsvg'
