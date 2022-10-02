@@ -30,7 +30,9 @@ pageHeight = millimeters 297
 createRegistrantPdf :: C.SVG -> [Registrant a] -> C.Render ()
 createRegistrantPdf _ [] = pure ()
 createRegistrantPdf template registrants = do
-    renderPage cardsPerPageH cardsPerPageV template registrants
+    renderPage Front cardsPerPageH cardsPerPageV template registrants
+    C.showPage
+    renderPage Back cardsPerPageH cardsPerPageV template registrants
     C.showPage
     createRegistrantPdf template (drop cardsPerPage registrants)
   where
@@ -38,15 +40,22 @@ createRegistrantPdf template registrants = do
     cardsPerPageV = floor (pageHeight / cardHeight)
     cardsPerPage = cardsPerPageH * cardsPerPageV
 
-renderPage :: Int -> Int -> C.SVG -> [Registrant a] -> C.Render ()
-renderPage cardsPerPageH cardsPerPageV template registrants = do
+data PageSide = Front | Back
+
+renderPage :: PageSide -> Int -> Int -> C.SVG -> [Registrant a] -> C.Render ()
+renderPage side cardsPerPageH cardsPerPageV template registrants = do
     C.save
     C.translate leftMargin topMargin
     for_ (distributeOnPage cardsPerPageH cardsPerPageV registrants) $ \row -> do
         C.save
-        for_ row $ \reg -> do
+        for_ (zip row [0..]) $ \(reg, col) -> do
+            C.save
+            let xPos = case side of
+                    Front -> cardWidth * fromIntegral col
+                    Back -> cardWidth * fromIntegral (cardsPerPageH - col - 1)
+            C.translate xPos 0
             registrantCard template reg
-            C.translate cardWidth 0
+            C.restore
         C.restore
         C.translate 0 cardHeight
     C.restore
