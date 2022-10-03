@@ -24,6 +24,8 @@ millimeters mm = mm / 25.4 * 72
 cardWidth, cardHeight, pageWidth, pageHeight :: Double
 cardWidth = millimeters 90
 cardHeight = millimeters 54
+cardGapWidth = millimeters 10
+cardGapHeight = millimeters 0
 pageWidth = millimeters 210
 pageHeight = millimeters 297
 
@@ -36,8 +38,8 @@ createRegistrantPdf template registrants = do
     C.showPage
     createRegistrantPdf template (drop cardsPerPage registrants)
   where
-    cardsPerPageH = floor (pageWidth / cardWidth)
-    cardsPerPageV = floor (pageHeight / cardHeight)
+    cardsPerPageH = floor (pageWidth / (cardWidth + cardGapWidth))
+    cardsPerPageV = floor (pageHeight / (cardHeight + cardGapHeight))
     cardsPerPage = cardsPerPageH * cardsPerPageV
 
 data PageSide = Front | Back
@@ -51,17 +53,17 @@ renderPage side cardsPerPageH cardsPerPageV template registrants = do
         for_ (zip row [0..]) $ \(reg, col) -> do
             C.save
             let xPos = case side of
-                    Front -> cardWidth * fromIntegral col
-                    Back -> cardWidth * fromIntegral (cardsPerPageH - col - 1)
+                    Front -> (cardWidth + cardGapWidth) * fromIntegral col
+                    Back -> (cardWidth + cardGapWidth) * fromIntegral (cardsPerPageH - col - 1)
             C.translate xPos 0
             registrantCard template reg
             C.restore
         C.restore
-        C.translate 0 cardHeight
+        C.translate 0 (cardHeight + cardGapHeight)
     C.restore
   where
-    topMargin = (pageHeight - fromIntegral cardsPerPageV * cardHeight) / 2
-    leftMargin = (pageWidth - fromIntegral cardsPerPageH * cardWidth) / 2
+    topMargin = (pageHeight - fromIntegral cardsPerPageV * cardHeight - fromIntegral (cardsPerPageV - 1) * cardGapHeight) / 2
+    leftMargin = (pageWidth - fromIntegral cardsPerPageH * cardWidth - fromIntegral (cardsPerPageH - 1) * cardGapWidth) / 2
 
 distributeOnPage :: Int -> Int -> [a] -> [[a]]
 distributeOnPage _ _ [] = []
@@ -74,29 +76,27 @@ registrantCard :: C.SVG -> Registrant a -> C.Render ()
 registrantCard template Registrant {..} = do
     C.moveTo 0 0
     C.svgRender template
-    C.rectangle 0 0 cardWidth cardHeight
-    C.stroke
     let registrantInfo = fromJust rInfo
         badgeName = fromMaybe (riName registrantInfo) (riBadgeName registrantInfo)
         affiliation = riAffiliation registrantInfo
 
-    C.moveTo (cardWidth / 2) 36
-    showTextJustify 24 (0.9 * cardWidth) badgeName
+    C.moveTo (cardWidth - 12) 36
+    showTextAligned 24 (cardWidth - 24) badgeName
     case affiliation of
         Nothing -> pure ()
         Just a -> do
-            C.moveTo (cardWidth / 2) 72
-            showTextJustify 15 (0.6 * cardWidth) a
+            C.moveTo (cardWidth - 12) 72
+            showTextAligned 15 (cardWidth - 72) a
 
-showTextJustify :: Double -> Double -> T.Text -> C.Render ()
-showTextJustify fontSize maxWidth txt = do
+showTextAligned :: Double -> Double -> T.Text -> C.Render ()
+showTextAligned fontSize maxWidth txt = do
     C.save
     C.setFontSize fontSize
     C.TextExtents {..} <- C.textExtents txt
     when (textExtentsWidth > maxWidth) $
         C.setFontSize (fontSize * maxWidth / textExtentsWidth)
     C.TextExtents {..} <- C.textExtents txt
-    C.relMoveTo (- textExtentsWidth / 2) 0
+    C.relMoveTo (- textExtentsWidth) 0
     C.showText txt
     C.newPath
     C.restore
