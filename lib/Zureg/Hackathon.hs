@@ -15,6 +15,8 @@ import           Zureg.Hackathon.Interface
 import qualified Zureg.Hackathon.MuniHac2020 as MuniHac2020
 import qualified Zureg.Hackathon.ZuriHac2021 as ZuriHac2021
 import qualified Zureg.Hackathon.ZuriHac2022 as ZuriHac2022
+import qualified Zureg.Hackathon.ZuriHac2023 as ZuriHac2023
+import qualified Zureg.Hackathon.ZuriHac2024 as ZuriHac2024
 
 -- | Load the hackathon stored in the 'ZUREG_HACKATHON' environment variable.
 withHackathonFromEnv
@@ -39,4 +41,6 @@ hackathons =
     [ ("munihac2020", SomeHackathon <$> MuniHac2020.newHackathon)
     , ("zurihac2021", SomeHackathon <$> ZuriHac2021.newHackathon)
     , ("zurihac2022", SomeHackathon <$> ZuriHac2022.newHackathon)
+    , ("zurihac2023", SomeHackathon <$> ZuriHac2023.newHackathon)
+    , ("zurihac2024", SomeHackathon <$> ZuriHac2024.newHackathon)
     ]

@@ -33,12 +33,12 @@ packages:
   original:
     hackage: eventful-dynamodb-0.2.0
 - completed:
-    hackage: qrcode-0.1.2@sha256:6fbed18e3c4ee0ea2acb2cb594c3d0d86d14c92fac7fa925a8834587f5124fb2,1224
+    hackage: hal-1.0.0.1@sha256:0d7706c8c9341aeca7b50dc60d66ebb32f28259d8afc3f555a7dc3a651f08f3d,4761
     pantry-tree:
-      size: 1162
-      sha256: 5e1026a7effc5e2bd71cba7a29ec2a0053bc2f55ce2904b4dd6fdbdfcadee5ca
+      size: 2449
+      sha256: 39cedd2a95379083b02934b19899da8d598dbdf12114785516d4bf38feda42e4
   original:
-    hackage: qrcode-0.1.2
+    hackage: hal-1.0.0.1
 - completed:
     hackage: unliftio-core-0.1.2.0@sha256:b0a7652ffce2284a6cebe05c99eb60573a8fb6631163f34b0b30a80b4a78cb23,1081
     pantry-tree:
@@ -53,6 +53,13 @@ packages:
       sha256: dc94e84bac66430bca207639fc8a2f1a37a88834c8f6572a0345f70298d6d0d1
   original:
     hackage: urlencoded-0.5.0.0
+- completed:
+    hackage: wai-handler-hal-0.3.0.0@sha256:7a0510f868b332bc14baf097c802979e0ae8ed5c999d359e42a6417afdccff55,2900
+    pantry-tree:
+      size: 594
+      sha256: 26e9c89686d0e7f60e92e8bd6fc20138fa362a8ec9c4f28c3f58a0a6e49555ec
+  original:
+    hackage: wai-handler-hal-0.3.0.0
 snapshots:
 - completed:
     size: 586286

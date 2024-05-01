@@ -6,9 +6,10 @@ extra-deps:
 - 'digestive-functors-0.8.4.2'
 - 'digestive-functors-blaze-0.6.2.0'
 - 'eventful-dynamodb-0.2.0'
-- 'qrcode-0.1.2'
+- 'hal-1.0.0.1'
 - 'unliftio-core-0.1.2.0'
 - 'urlencoded-0.5.0.0'
+- 'wai-handler-hal-0.3.0.0'
 nix:
   packages:
   - 'zlib'

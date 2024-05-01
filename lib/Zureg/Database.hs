@@ -28,7 +28,7 @@ import           Control.Monad.Trans     (liftIO)
 import qualified Data.Aeson              as A
 import qualified Data.Aeson.TH.Extended  as A
 import qualified Data.HashMap.Strict     as HMS
-import           Data.Maybe              (listToMaybe)
+import           Data.Maybe              (fromMaybe, listToMaybe)
 import qualified Data.Text               as T
 import qualified Eventful                as E
 import qualified Eventful.Store.DynamoDB as E
@@ -167,6 +167,8 @@ data RegistrantsSummary = RegistrantsSummary
     , rsConfirmed :: Int
     , rsAttending :: Int
     , rsAvailable :: Int
+    , rsScanned   :: Int
+    , rsSpam      :: Int
     } deriving (Show)
 
 $(A.deriveJSON A.options ''RegistrantsSummary)
@@ -175,19 +177,21 @@ registrantsSummaryToAttributeValue
     :: RegistrantsSummary -> DynamoDB.AttributeValue
 registrantsSummaryToAttributeValue RegistrantsSummary {..} =
     DynamoDB.attributeValue & DynamoDB.avM .~ HMS.fromList
-        [ ("total", avi rsTotal),
-          ("waiting", avi rsWaiting ),
-          ("confirmed", avi rsConfirmed),
-          ("attending", avi rsAttending),
-          ("available", avi rsAvailable)
+        [ ("total", avi rsTotal)
+        , ("waiting", avi rsWaiting)
+        , ("confirmed", avi rsConfirmed)
+        , ("attending", avi rsAttending)
+        , ("available", avi rsAvailable)
+        , ("scanned", avi rsScanned)
+        , ("spam", avi rsSpam)
         ]
-
 
 registrantsSummaryFromAttributeValue
     :: DynamoDB.AttributeValue -> Maybe RegistrantsSummary
 registrantsSummaryFromAttributeValue av = RegistrantsSummary
     <$> getInt "total" <*> getInt "waiting" <*> getInt "confirmed"
-    <*> getInt "attending" <*> getInt "available"
+    <*> getInt "attending" <*> getInt "available" <*> getInt "scanned"
+    <*> pure (fromMaybe 0 (getInt "spam"))
   where
     getInt :: T.Text -> Maybe Int
     getInt key = do

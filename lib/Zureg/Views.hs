@@ -18,12 +18,10 @@ module Zureg.Views
     , scan
     ) where
 
-import qualified Codec.Binary.QRCode         as QRCode
-import qualified Codec.Picture               as JP
+import qualified Codec.QRCode                as QRCode
+import qualified Codec.QRCode.JuicyPixels    as QRCode.JP
 import           Control.Monad               (unless, when)
-import qualified Data.Array                  as Array
 import qualified Data.ByteString             as B
-import qualified Data.ByteString.Base64.Lazy as Base64
 import qualified Data.FileEmbed              as Embed
 import           Data.Maybe                  (fromMaybe)
 import qualified Data.Text                   as T
@@ -33,8 +31,8 @@ import qualified Text.Blaze.Html5.Attributes as A
 import qualified Text.Digestive              as D
 import qualified Zureg.Captcha               as Captcha
 import qualified Zureg.Form                  as Form
-import           Zureg.Hackathon             (Hackathon)
 import qualified Zureg.Hackathon             as Hackathon
+import           Zureg.Hackathon             (Hackathon)
 import           Zureg.Main.Badges           (previewBadge, registrantToBadge)
 import           Zureg.Model
 
@@ -140,7 +138,7 @@ ticket hackathon Registrant {..} = template
             qrimg $ T.unpack $ E.uuidToText rUuid
 
         H.div $ do
-            H.h1 $ registerState rState
+            H.h1 $ fst $ registerState rState
             whenJust rInfo $ registrantInfo
             whenJust rAdditionalInfo $ Hackathon.ticketView hackathon
 
@@ -176,13 +174,14 @@ ticket hackathon Registrant {..} = template
                 H.input H.! A.type_ "submit"
                     H.! A.value "Cancel my registration")
 
-registerState :: Maybe RegisterState -> H.Html
+registerState :: Maybe RegisterState -> (H.Html, Bool)
 registerState rs = case rs of
-    Nothing         -> "❌ Not registered"
-    Just Cancelled  -> "❌ Cancelled"
-    Just Registered -> "✅ Registered"
-    Just Confirmed  -> "✅ Confirmed"
-    Just Waitlisted -> "⌛ on the waitlist"
+    Nothing         -> ("❌ Not registered", False)
+    Just Cancelled  -> ("❌ Cancelled", False)
+    Just Registered -> ("✅ Registered", True)
+    Just Confirmed  -> ("✅ Confirmed", True)
+    Just Waitlisted -> ("⌛ on the waitlist", False)
+    Just Spam       -> ("🥫 Spam", False)
 
 registrantInfo :: RegisterInfo -> H.Html
 registrantInfo RegisterInfo {..} = H.p $ do
@@ -199,22 +198,17 @@ cancelSuccess = template mempty $ do
     H.p "We hope to see you next year!"
 
 qrimg :: String -> H.Html
-qrimg qrdata = fromMaybe "Could not generate QR code" $ do
-    version <- QRCode.version 2
-    matrix  <- QRCode.encode version QRCode.L QRCode.Alphanumeric qrdata
-    let array = QRCode.toArray matrix :: Array.Array (Int, Int) JP.Pixel8
-        moduleSize = 16 -- QR-Code version 2 has 25x25 modules, so this amounts to an image size of 400px
-        image = JP.generateImage
-            (\x y -> array Array.! (x `div` moduleSize, y `div` moduleSize))
-            (moduleSize * (QRCode.width matrix + 1))
-            (moduleSize * (QRCode.width matrix + 1))
-
-        base64 = Base64.encode $ JP.encodePng image
-        src    = "data:image/png;base64," <> H.unsafeLazyByteStringValue base64
-
-    return $ H.img
-        H.! A.class_ "qr"
-        H.! A.src src
+qrimg payload = fromMaybe "Could not generate QR code" $ do
+    img <- QRCode.encode options encoding payload
+    let image = QRCode.JP.toPngDataUrlT border scale img
+    return $ H.img H.! A.class_ "qr" H.! A.src (H.toValue image)
+  where
+    border   = 1
+    scale    = 16
+    encoding = QRCode.Iso8859_1
+    options  = (QRCode.defaultQRCodeOptions QRCode.L)
+        { QRCode.qroMinVersion = 2
+        }
 
 scanner :: H.Html
 scanner = H.docTypeHtml $ do
@@ -245,12 +239,8 @@ fileScanner =
 
 scan :: Hackathon a -> Registrant a -> H.Html
 scan hackathon registrant@Registrant {..} = H.ul $ do
-    H.li $ H.strong $ case rState of
-        Nothing         -> red "❌ Not registered"
-        Just Cancelled  -> red "❌ Cancelled"
-        Just Registered -> "✅ Registered"
-        Just Confirmed  -> "✅ Confirmed"
-        Just Waitlisted -> red "⌛ on the waitlist"
+    H.li $ H.strong $
+        let (html, ok) = registerState rState in (if ok then id else red) html
 
     H.li $ case (registrantRegisteredAt registrant, registrantToBadge registrant) of
         (_, Nothing)                        -> red "No Badge"
