@@ -11,7 +11,7 @@ build: build/zureg-lambda.zip
 build/zureg-lambda/bootstrap: build/image.txt
 	mkdir -p build/zureg-lambda
 	docker run \
-		-m 4GB \
+		-m 8GB \
 		--user $(shell id -u):$(shell id -g) \
 		--mount type=bind,source=$(shell pwd)/build/zureg-lambda,target=/dist \
 		--rm \
@@ -27,7 +27,7 @@ build/zureg-lambda.zip: build/zureg-lambda/bootstrap
 # to make the Makefile dependency tracking work.
 build/image.txt: Dockerfile $(SOURCES)
 	mkdir -p build
-	docker build -m 4GB -t zureg .
+	docker build -m 8GB -t zureg .
 	echo "zureg" >$@
 
 # This is simply a text file with the name of the bucket we will be putting our
