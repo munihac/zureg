@@ -71,6 +71,7 @@ deploy: build/zureg-lambda.txt build/bucket.txt
 			Hackathon=$(shell jq -r '.ZUREG_HACKATHON' deploy/env.json) \
 			Email=$(shell jq -r '.ZUREG_EMAIL' deploy/env.json) \
 			ScannerSecret=$(shell jq -r '.ZUREG_SCANNER_SECRET' deploy/env.json) \
+			RecaptchaSecret=$(shell jq -r '.ZUREG_RECAPTCHA_SECRET' deploy/env.json) \
 			HCaptchaSiteKey=$(shell jq -r '.ZUREG_HCAPTCHA_SITEKEY' deploy/env.json) \
 			HCaptchaSecret=$(shell jq -r '.ZUREG_HCAPTCHA_SECRET' deploy/env.json) \
 			DiscordGuildID=$(shell jq -r '.ZUREG_DISCORD_GUILD_ID' deploy/env.json) \
