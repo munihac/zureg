@@ -8,6 +8,7 @@ import qualified Data.Text                         as T
 import qualified Text.Blaze.Html5                  as H
 import           System.Environment                (getEnv)
 import qualified Zureg.Captcha.ReCaptcha           as ReCaptcha
+import qualified Zureg.Captcha.NoCaptcha           as NoCaptcha
 import qualified Zureg.Database                    as Database
 import           Zureg.Hackathon.Interface         (Hackathon)
 import qualified Zureg.Hackathon.Interface         as Hackathon
@@ -21,11 +22,13 @@ newHackathon = do
     scannerSecret   <- T.pack <$> getEnv "ZUREG_SCANNER_SECRET"
     email           <- T.pack <$> getEnv "ZUREG_EMAIL"
 
-    reCaptchaSecret <- T.pack <$> getEnv "ZUREG_RECAPTCHA_SECRET"
-    captcha         <- ReCaptcha.new ReCaptcha.Config
-        { ReCaptcha.cSiteKey   = "6Lcmk7wZAAAAAKMmP6sKNvd5gVI8aGaMrWjE3JkZ"
-        , ReCaptcha.cSecretKey = reCaptchaSecret
-        }
+    -- reCaptchaSecret <- T.pack <$> getEnv "ZUREG_RECAPTCHA_SECRET"
+    -- captcha         <- ReCaptcha.new ReCaptcha.Config
+    --     { ReCaptcha.cSiteKey   = "6Lcmk7wZAAAAAKMmP6sKNvd5gVI8aGaMrWjE3JkZ"
+    --     , ReCaptcha.cSecretKey = reCaptchaSecret
+    --     }
+
+    captcha         <- NoCaptcha.new
 
     return Hackathon.Hackathon
         { Hackathon.name = "MuniHac 2024"
