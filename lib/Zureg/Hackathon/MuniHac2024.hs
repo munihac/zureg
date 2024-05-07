@@ -22,13 +22,11 @@ newHackathon = do
     scannerSecret   <- T.pack <$> getEnv "ZUREG_SCANNER_SECRET"
     email           <- T.pack <$> getEnv "ZUREG_EMAIL"
 
-    -- reCaptchaSecret <- T.pack <$> getEnv "ZUREG_RECAPTCHA_SECRET"
-    -- captcha         <- ReCaptcha.new ReCaptcha.Config
-    --     { ReCaptcha.cSiteKey   = "6Lcmk7wZAAAAAKMmP6sKNvd5gVI8aGaMrWjE3JkZ"
-    --     , ReCaptcha.cSecretKey = reCaptchaSecret
-    --     }
-
-    captcha         <- NoCaptcha.new
+    reCaptchaSecret <- T.pack <$> getEnv "ZUREG_RECAPTCHA_SECRET"
+    captcha         <- ReCaptcha.new ReCaptcha.Config
+        { ReCaptcha.cSiteKey   = "6Lcmk7wZAAAAAKMmP6sKNvd5gVI8aGaMrWjE3JkZ"
+        , ReCaptcha.cSecretKey = reCaptchaSecret
+        }
 
     return Hackathon.Hackathon
         { Hackathon.name = "MuniHac 2024"
@@ -60,5 +58,5 @@ newHackathon = do
         , Hackathon.captcha = captcha
         , Hackathon.scannerSecret = scannerSecret
         , Hackathon.chatExplanation = H.p "You can join the MuniHac Slack instance here:"
-        , Hackathon.chatUrl = pure "https://join.slack.com/t/munihac/shared_invite/zt-gaq3veyb-u3j9F0LqN0Q60Zc2MVqvSw"
+        , Hackathon.chatUrl = pure "https://join.slack.com/t/munihac/shared_invite/zt-2i1v0wxev-M_DkjOxBpuX2B5CfPk8Nlg"
         }
