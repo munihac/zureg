@@ -62,7 +62,7 @@ additionalInfoView view = do
     H.h2 "Optional information"
 
     H.p $ H.strong "T-Shirt"
-    H.p $ "In what size would you like the free T-Shirt?"
+    H.p $ "If you were to get a T-Shirt, what size and cut would it be?"
     DH.label "tshirt.cut" view "Cut"
     DH.inputSelect "tshirt.cut" view
     H.br
