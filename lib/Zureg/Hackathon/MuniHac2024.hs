@@ -33,7 +33,7 @@ newHackathon = do
         , Hackathon.baseUrl = "https://registration.munihac.de"
         , Hackathon.contactUrl = "https://munihac.de/2024.html#contact"
         , Hackathon.legalNoticeUrl = Just "https://munihac.de/impressum.html"
-        , Hackathon.capacity = 120
+        , Hackathon.capacity = 80
         , Hackathon.confirmation = False
 
         , Hackathon.registerBadgeName = True
