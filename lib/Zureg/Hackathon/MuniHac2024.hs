@@ -8,7 +8,6 @@ import qualified Data.Text                         as T
 import qualified Text.Blaze.Html5                  as H
 import           System.Environment                (getEnv)
 import qualified Zureg.Captcha.ReCaptcha           as ReCaptcha
-import qualified Zureg.Captcha.NoCaptcha           as NoCaptcha
 import qualified Zureg.Database                    as Database
 import           Zureg.Hackathon.Interface         (Hackathon)
 import qualified Zureg.Hackathon.Interface         as Hackathon
@@ -34,7 +33,7 @@ newHackathon = do
         , Hackathon.contactUrl = "https://munihac.de/2024.html#contact"
         , Hackathon.legalNoticeUrl = Just "https://munihac.de/impressum.html"
         , Hackathon.capacity = 80
-        , Hackathon.confirmation = False
+        , Hackathon.confirmation = True
 
         , Hackathon.registerBadgeName = True
         , Hackathon.registerAffiliation = True
