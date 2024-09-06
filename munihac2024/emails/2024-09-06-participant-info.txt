@@ -1,0 +1,52 @@
+Hello {{info.name}},
+
+MuniHac 2024 is only five weeks away, and we're excited to have you all in Munich
+again!
+
+Here's a few updates from our side as well as some organizational stuff:
+
+# IMPORTANT: Please confirm (or cancel) your registration here:
+
+    https://registration.munihac.de/ticket?uuid={{uuid}}
+
+    By confirming your registration, we have a better overview over how many
+    people will actually be attending, which helps us plan ahead for things like
+    food and rooms. Confirming your registration will give you access to your
+    ticket.
+    In case you won't be able to attend, we ask you to cancel your registration.
+
+# Venue and Hotels
+
+    MuniHac 2024 will take place at the TNG Technoloy Consulting offices,
+    Beta-Straße 13a, Unterföhring. The venue can be reached S-Bahn and Bus.
+
+    In case you're still looking for accomodation, we've added a list of nearby
+    hotels to our website: https://munihac.de/2024.html#hotels
+
+# Keynotes, talks and workshops
+
+    While the main focus of MuniHac is in getting together and hacking on
+    projects, we also want to provide a line-up of talks and workshops:
+
+    * Three keynotes by Hécate, Niki Vazou, and Hannes Siebenhandl
+    * As always, there will be a Beginners Workshop that teaches the basics of
+      Haskell
+    * And more talks and workshops!
+    
+    The full list can be found on https://munihac.de/2024.html#programme, we'll
+    update the page regularly. We'll also release the schedule soon.
+
+# Communication
+
+    As in the last years, you can use our Slack space for communicating with
+    other attendees. If you haven't done yet, please subscribe to the
+    #munihac-2024 channel for announcements! If you don't have an account yet,
+    you can create one via this invite link:
+
+    https://join.slack.com/t/munihac/shared_invite/zt-2i1v0wxev-M_DkjOxBpuX2B5CfPk8Nlg
+
+
+We're looking forward to seeing you in Munich!
+
+On behalf of the MuniHac organisers,
+    Franz Thoma
