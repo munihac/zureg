@@ -77,24 +77,29 @@ registrantCard template Registrant {..} = do
         badgeName = fromMaybe (riName registrantInfo) (riBadgeName registrantInfo)
         affiliation = riAffiliation registrantInfo
 
-    C.moveTo (cardWidth - millimeters 4) (millimeters 12)
-    showTextAligned (millimeters 8) (cardWidth - millimeters 8) badgeName
+    C.moveTo (cardWidth / 2) (millimeters 12)
+    showTextAligned ACenter (millimeters 8) (cardWidth - millimeters 8) badgeName
     case affiliation of
         Nothing -> pure ()
         Just a -> do
-            C.moveTo (cardWidth - millimeters 4) (millimeters 24)
-            showTextAligned (millimeters 5) (cardWidth - millimeters 24) a
+            C.moveTo (cardWidth / 2) (millimeters 24)
+            showTextAligned ACenter (millimeters 5) (cardWidth - millimeters 8) a
 
-showTextAligned :: Double -> Double -> T.Text -> C.Render ()
-showTextAligned fontSize maxWidth txt = cairoScope $ do
+showTextAligned :: Alignment -> Double -> Double -> T.Text -> C.Render ()
+showTextAligned alignment fontSize maxWidth txt = cairoScope $ do
     C.setFontSize fontSize
     C.TextExtents {..} <- C.textExtents txt
     when (textExtentsWidth > maxWidth) $
         C.setFontSize (fontSize * maxWidth / textExtentsWidth)
     C.TextExtents {..} <- C.textExtents txt
-    C.relMoveTo (- textExtentsWidth) 0
+    case alignment of
+        ALeft   -> pure ()
+        ACenter -> C.relMoveTo (- textExtentsWidth / 2) 0
+        ARight  -> C.relMoveTo (- textExtentsWidth) 0
     C.showText txt
     C.newPath
+
+data Alignment = ALeft | ACenter | ARight
 
 cairoScope :: C.Render a -> C.Render a
 cairoScope action = C.save *> action <* C.restore
