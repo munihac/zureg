@@ -45,22 +45,16 @@ createRegistrantPdf template registrants = do
 data PageSide = Front | Back
 
 renderPage :: PageSide -> Int -> Int -> C.SVG -> [Registrant a] -> C.Render ()
-renderPage side cardsPerPageH cardsPerPageV template registrants = do
-    C.save
+renderPage side cardsPerPageH cardsPerPageV template registrants = cairoScope $ do
     C.translate leftMargin topMargin
     for_ (distributeOnPage cardsPerPageH cardsPerPageV registrants) $ \row -> do
-        C.save
-        for_ (zip row [0..]) $ \(reg, col) -> do
-            C.save
+        cairoScope $ for_ (zip row [0..]) $ \(reg, col) -> cairoScope $ do
             let xPos = case side of
                     Front -> (cardWidth + cardGapWidth) * fromIntegral col
                     Back -> (cardWidth + cardGapWidth) * fromIntegral (cardsPerPageH - col - 1)
             C.translate xPos 0
             registrantCard template reg
-            C.restore
-        C.restore
         C.translate 0 (cardHeight + cardGapHeight)
-    C.restore
   where
     topMargin = (pageHeight - fromIntegral cardsPerPageV * cardHeight - fromIntegral (cardsPerPageV - 1) * cardGapHeight) / 2
     leftMargin = (pageWidth - fromIntegral cardsPerPageH * cardWidth - fromIntegral (cardsPerPageH - 1) * cardGapWidth) / 2
@@ -92,8 +86,7 @@ registrantCard template Registrant {..} = do
             showTextAligned (millimeters 5) (cardWidth - millimeters 24) a
 
 showTextAligned :: Double -> Double -> T.Text -> C.Render ()
-showTextAligned fontSize maxWidth txt = do
-    C.save
+showTextAligned fontSize maxWidth txt = cairoScope $ do
     C.setFontSize fontSize
     C.TextExtents {..} <- C.textExtents txt
     when (textExtentsWidth > maxWidth) $
@@ -102,7 +95,6 @@ showTextAligned fontSize maxWidth txt = do
     C.relMoveTo (- textExtentsWidth) 0
     C.showText txt
     C.newPath
-    C.restore
 
 cairoScope :: C.Render a -> C.Render a
 cairoScope action = C.save *> action <* C.restore
