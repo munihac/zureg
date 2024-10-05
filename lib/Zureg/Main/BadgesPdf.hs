@@ -75,18 +75,21 @@ distributeOnPage h v xs =
 registrantCard :: C.SVG -> Registrant a -> C.Render ()
 registrantCard template Registrant {..} = do
     C.moveTo 0 0
-    C.svgRender template
+    cairoScope $ do
+        C.scale 0.8 0.8
+        C.svgRender template
+
     let registrantInfo = fromJust rInfo
         badgeName = fromMaybe (riName registrantInfo) (riBadgeName registrantInfo)
         affiliation = riAffiliation registrantInfo
 
-    C.moveTo (cardWidth - 12) 36
-    showTextAligned 24 (cardWidth - 24) badgeName
+    C.moveTo (cardWidth - millimeters 4) (millimeters 12)
+    showTextAligned (millimeters 8) (cardWidth - millimeters 8) badgeName
     case affiliation of
         Nothing -> pure ()
         Just a -> do
-            C.moveTo (cardWidth - 12) 72
-            showTextAligned 15 (cardWidth - 72) a
+            C.moveTo (cardWidth - millimeters 4) (millimeters 24)
+            showTextAligned (millimeters 5) (cardWidth - millimeters 24) a
 
 showTextAligned :: Double -> Double -> T.Text -> C.Render ()
 showTextAligned fontSize maxWidth txt = do
@@ -100,6 +103,9 @@ showTextAligned fontSize maxWidth txt = do
     C.showText txt
     C.newPath
     C.restore
+
+cairoScope :: C.Render a -> C.Render a
+cairoScope action = C.save *> action <* C.restore
 
 main :: forall a. A.FromJSON a => Hackathon a -> IO ()
 main _ = do
