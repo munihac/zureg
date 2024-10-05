@@ -7,6 +7,7 @@ import qualified Data.Aeson           as A
 import qualified Data.ByteString.Lazy as BL
 import qualified Data.Csv             as Csv
 import           Data.Foldable        (for_)
+import           Data.List            (sortOn)
 import           Data.Maybe           (fromJust, fromMaybe, mapMaybe, maybeToList)
 import qualified Data.Text            as T
 import qualified Graphics.Rendering.Cairo as C
@@ -73,13 +74,10 @@ registrantCard template Registrant {..} = do
         C.scale 0.8 0.8
         C.svgRender template
 
-    let registrantInfo = fromJust rInfo
-        badgeName = fromMaybe (riName registrantInfo) (riBadgeName registrantInfo)
-        affiliation = riAffiliation registrantInfo
-
     C.moveTo (cardWidth / 2) (millimeters 16)
-    showTextAligned ACenter (millimeters 12) (cardWidth - millimeters 8) badgeName
-    case affiliation of
+    showTextAligned ACenter (millimeters 12) (cardWidth - millimeters 8) (badgeName (fromJust rInfo))
+
+    case riAffiliation (fromJust rInfo) of
         Nothing -> pure ()
         Just a -> do
             C.moveTo (cardWidth / 2) (millimeters 28)
@@ -114,11 +112,12 @@ main _ = do
             registrantsOrError <- A.eitherDecodeFileStrict exportPath
             registrants <- either (fail . show) return registrantsOrError
                 :: IO [Registrant a]
+            let registrantsSorted = sortOn (T.toLower . badgeName . fromJust . rInfo) registrants
 
             template <- C.svgNewFromFile templateFile
 
             C.withPDFSurface outputPdf pageWidth pageHeight $ \surface ->
-                C.renderWith surface (createRegistrantPdf template registrants)
+                C.renderWith surface (createRegistrantPdf template registrantsSorted)
 
         _ -> do
             IO.hPutStr IO.stderr $ unlines
@@ -128,3 +127,6 @@ main _ = do
                 , "export tool."
                 ]
             exitFailure
+
+badgeName :: RegisterInfo -> T.Text
+badgeName registrantInfo = fromMaybe (riName registrantInfo) (riBadgeName registrantInfo)
