@@ -77,12 +77,12 @@ registrantCard template Registrant {..} = do
         badgeName = fromMaybe (riName registrantInfo) (riBadgeName registrantInfo)
         affiliation = riAffiliation registrantInfo
 
-    C.moveTo (cardWidth / 2) (millimeters 12)
-    showTextAligned ACenter (millimeters 8) (cardWidth - millimeters 8) badgeName
+    C.moveTo (cardWidth / 2) (millimeters 16)
+    showTextAligned ACenter (millimeters 12) (cardWidth - millimeters 8) badgeName
     case affiliation of
         Nothing -> pure ()
         Just a -> do
-            C.moveTo (cardWidth / 2) (millimeters 24)
+            C.moveTo (cardWidth / 2) (millimeters 28)
             showTextAligned ACenter (millimeters 5) (cardWidth - millimeters 8) a
 
 showTextAligned :: Alignment -> Double -> Double -> T.Text -> C.Render ()
