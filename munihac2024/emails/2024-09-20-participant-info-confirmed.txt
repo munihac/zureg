@@ -1,0 +1,50 @@
+Hello {{info.name}},
+
+three weeks to go for MuniHac 2024! Here's some more updates and organizational
+stuff:
+
+# Venue
+
+    https://maps.app.goo.gl/WcorMX1PaNHHcRdt8
+
+    MuniHac 2024 will take place at the TNG Technoloy Consulting offices,
+    Beta-Straße 13a, Unterföhring. The venue can be reached S-Bahn and Bus.
+
+    The entrance to MuniHac will be at the left side of the building
+    (Beta-Straße 13a).
+
+# Schedule
+    
+    https://munihac.de/2024.html#schedule
+
+    MuniHac will start on Friday, October 10th at 9:00, and end around 16:00 on
+    Sunday, October 13th.
+
+    You can find the preliminary schedule on the MuniHac website. There might be
+    some updates in the next weeks, so be sure to check again before the event!
+
+    You can check in at the registration desk on Friday between 8:30–11:30, or
+    Saturday between 9:00–10:30. If you plan to arrive outside these time
+    windows for some reason, please let us know in advance (via email or Slack).
+
+# Programme
+
+    https://munihac.de/2024.html#programme
+
+    While the main focus of MuniHac is in getting together and hacking on
+    projects, we are also happy to provide a line-up of three keynotes, and
+    additional talks and workshops!
+
+# Communication
+
+    As in the last years, you can use our Slack space for communicating with
+    other attendees. If you haven't done yet, please subscribe to the
+    #munihac-2024 channel for announcements! If you don't have an account yet,
+    you can create one via this invite link:
+
+    https://join.slack.com/t/munihac/shared_invite/zt-2i1v0wxev-M_DkjOxBpuX2B5CfPk8Nlg
+
+We're looking forward to seeing you in Munich!
+
+On behalf of the MuniHac organisers,
+    Franz Thoma
