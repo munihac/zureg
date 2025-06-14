@@ -1,5 +1,5 @@
-AWS_PROFILE=zfoh
-AWS_REGION=us-east-1
+AWS_PROFILE=munihac
+AWS_REGION=eu-central-1
 
 SOURCES=$(shell find src/ lib/ -name '*.hs') zureg.cabal
 
