@@ -50,7 +50,7 @@ newHackathon = do
                     H.strong $ H.toHtml (show tsiSize)
         , Hackathon.csvHeader = MH24.csvHeader
 
-        , Hackathon.databaseConfig = Database.defaultConfig
+        , Hackathon.databaseConfig = Database.Config "registrants_2024" "emails_2024" "summaries_2024"
         , Hackathon.sendEmailConfig = SendEmail.Config
             { SendEmail.cFrom = "MuniHac Registration Bot <" <> email <> ">"
             }
