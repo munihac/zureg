@@ -1,0 +1,24 @@
+Hello {{info.name}},
+
+MuniHac is in for another iteration:
+
+  September 12–14, 2025
+
+Registration is open: https://munihac.de/2025.html#register
+
+Also, our CfC is open until August 10th, if you have a talk
+or workshop you'd like to submit, let us know:
+https://munihac.de/2025.html#cfc
+
+More information as well as updates on keynote speakers,
+programme and schedule can be found on the website,
+https://munihac.de/2025.html
+
+We're looking forward to seeing you there!
+
+On behalf of the MuniHac organisers,
+    Franz
+
+PS. You're receiving this email because at your registration
+with MuniHac 2024, you checked the "Should we send an email
+announcing next year's MuniHac" box.
