@@ -47,6 +47,8 @@ data PageSide = Front | Back
 
 renderPage :: PageSide -> Int -> Int -> C.SVG -> [Registrant a] -> C.Render ()
 renderPage side cardsPerPageH cardsPerPageV template registrants = cairoScope $ do
+    C.setSourceRGB (143/255) (76/255) (138/255)
+    C.paint
     C.translate leftMargin topMargin
     for_ (distributeOnPage cardsPerPageH cardsPerPageV registrants) $ \row -> do
         cairoScope $ for_ (zip row [0..]) $ \(reg, col) -> cairoScope $ do
@@ -54,6 +56,7 @@ renderPage side cardsPerPageH cardsPerPageV template registrants = cairoScope $ 
                     Front -> (cardWidth + cardGapWidth) * fromIntegral col
                     Back -> (cardWidth + cardGapWidth) * fromIntegral (cardsPerPageH - col - 1)
             C.translate xPos 0
+            C.setSourceRGB 1 1 1
             registrantCard template reg
         C.translate 0 (cardHeight + cardGapHeight)
   where
