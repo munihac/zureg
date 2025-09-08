@@ -25,7 +25,7 @@ millimeters mm = mm / 25.4 * 72
 cardWidth, cardHeight, pageWidth, pageHeight :: Double
 cardWidth = millimeters 90
 cardHeight = millimeters 54
-cardGapWidth = millimeters 10
+cardGapWidth = millimeters 0
 cardGapHeight = millimeters 0
 pageWidth = millimeters 210
 pageHeight = millimeters 297
