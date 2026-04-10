@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
-module Zureg.Hackathon.MuniHac2024
+module Zureg.Hackathon.MuniHac2025
     ( newHackathon
     ) where
 
@@ -11,12 +11,12 @@ import qualified Zureg.Captcha.ReCaptcha           as ReCaptcha
 import qualified Zureg.Database                    as Database
 import           Zureg.Hackathon.Interface         (Hackathon)
 import qualified Zureg.Hackathon.Interface         as Hackathon
-import qualified Zureg.Hackathon.MuniHac2024.Form  as MH24
-import qualified Zureg.Hackathon.MuniHac2024.Model as MH24
+import qualified Zureg.Hackathon.MuniHac2025.Form  as MH25
+import qualified Zureg.Hackathon.MuniHac2025.Model as MH25
 import           Zureg.Model
 import qualified Zureg.SendEmail                   as SendEmail
 
-newHackathon :: IO (Hackathon MH24.RegisterInfo)
+newHackathon :: IO (Hackathon MH25.RegisterInfo)
 newHackathon = do
     scannerSecret   <- T.pack <$> getEnv "ZUREG_SCANNER_SECRET"
     email           <- T.pack <$> getEnv "ZUREG_EMAIL"
@@ -28,9 +28,9 @@ newHackathon = do
         }
 
     return Hackathon.Hackathon
-        { Hackathon.name = "MuniHac 2024"
+        { Hackathon.name = "MuniHac 2025"
         , Hackathon.baseUrl = "https://registration.munihac.de"
-        , Hackathon.contactUrl = "https://munihac.de/2024.html#contact"
+        , Hackathon.contactUrl = "https://munihac.de/2025.html#contact"
         , Hackathon.legalNoticeUrl = Just "https://munihac.de/impressum.html"
         , Hackathon.capacity = 80
         , Hackathon.confirmation = True
@@ -38,19 +38,19 @@ newHackathon = do
         , Hackathon.registerBadgeName = True
         , Hackathon.registerAffiliation = True
 
-        , Hackathon.registerForm = MH24.additionalInfoForm
-        , Hackathon.registerView = MH24.additionalInfoView
+        , Hackathon.registerForm = MH25.additionalInfoForm
+        , Hackathon.registerView = MH25.additionalInfoView
         , Hackathon.ticketView = mempty
         , Hackathon.scanView = \Registrant {..} -> case rAdditionalInfo of
             Nothing                -> mempty
-            Just MH24.RegisterInfo {..} -> case riTShirt of
+            Just MH25.RegisterInfo {..} -> case riTShirt of
                 Nothing                   -> "No T-Shirt"
-                Just MH24.TShirtInfo {..} -> do
+                Just MH25.TShirtInfo {..} -> do
                     "T-Shirt size: "
                     H.strong $ H.toHtml (show tsiSize)
-        , Hackathon.csvHeader = MH24.csvHeader
+        , Hackathon.csvHeader = MH25.csvHeader
 
-        , Hackathon.databaseConfig = Database.Config "registrants_2024" "emails_2024" "summaries_2024"
+        , Hackathon.databaseConfig = Database.defaultConfig
         , Hackathon.sendEmailConfig = SendEmail.Config
             { SendEmail.cFrom = "MuniHac Registration Bot <" <> email <> ">"
             }
