@@ -12,6 +12,9 @@ Parameters:
   Email:
     Type: 'String'
     Description: 'Email address that the registration bot sends email from.'
+  SesIdentity:
+    Type: 'String'
+    Description: 'SES identity that allows sending emails from the aforementioned email address.'
   ScannerSecret:
     Type: 'String'
     Description: 'Secret for accessing the scanner page.'
@@ -147,7 +150,7 @@ Resources:
             Resource: {'Fn::GetAtt': ['SummariesDatabase', 'Arn']}
           - Effect: 'Allow'
             Action: ['ses:SendEmail']
-            Resource: {'Fn::Sub': 'arn:aws:ses:${AWS::Region}:${AWS::AccountId}:identity/${Email}'}
+            Resource: {'Fn::Sub': 'arn:aws:ses:${AWS::Region}:${AWS::AccountId}:identity/${SesIdentity}'}
 
   # Allow ApiGateway to invoke the function.
   WebInvokePermission:
