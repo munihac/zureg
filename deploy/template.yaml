@@ -12,6 +12,9 @@ Parameters:
   Email:
     Type: 'String'
     Description: 'Email address that the registration bot sends email from.'
+  ReplyTo:
+    Type: 'String'
+    Description: 'Email address that the registration bot uses in the Reply-To header.'
   SesIdentity:
     Type: 'String'
     Description: 'SES identity that allows sending emails from the aforementioned email address.'
@@ -110,6 +113,7 @@ Resources:
         Variables:
           ZUREG_HACKATHON: {'Ref': 'Hackathon'}
           ZUREG_EMAIL: {'Ref': 'Email'}
+          ZUREG_EMAIL_REPLY_TO: {'Ref': 'ReplyTo'}
           ZUREG_SCANNER_SECRET: {'Ref': 'ScannerSecret'}
           ZUREG_RECAPTCHA_SECRET: {'Ref': 'RecaptchaSecret'}
           ZUREG_HCAPTCHA_SITEKEY: {'Ref': 'HCaptchaSiteKey'}

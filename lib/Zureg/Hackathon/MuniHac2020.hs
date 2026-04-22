@@ -4,7 +4,7 @@ module Zureg.Hackathon.MuniHac2020
     ) where
 
 import qualified Data.Text                         as T
-import           System.Environment                (getEnv)
+import           System.Environment                (getEnv, lookupEnv)
 import qualified Zureg.Captcha.ReCaptcha           as ReCaptcha
 import qualified Zureg.Database                    as Database
 import           Zureg.Hackathon.Interface         (Hackathon)
@@ -17,6 +17,7 @@ newHackathon :: IO (Hackathon RegisterInfo)
 newHackathon = do
     scannerSecret   <- T.pack <$> getEnv "ZUREG_SCANNER_SECRET"
     email           <- T.pack <$> getEnv "ZUREG_EMAIL"
+    replyToEmail    <- fmap T.pack <$> lookupEnv "ZUREG_EMAIL_REPLY_TO"
 
     reCaptchaSecret <- T.pack <$> getEnv "ZUREG_RECAPTCHA_SECRET"
     captcha         <- ReCaptcha.new ReCaptcha.Config
@@ -44,6 +45,7 @@ newHackathon = do
         , Hackathon.databaseConfig = Database.defaultConfig
         , Hackathon.sendEmailConfig = SendEmail.Config
             { SendEmail.cFrom = "MuniHac Registration Bot <" <> email <> ">"
+            , SendEmail.cReplyTo = replyToEmail
             }
         , Hackathon.captcha = captcha
         , Hackathon.scannerSecret = scannerSecret
