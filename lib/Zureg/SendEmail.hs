@@ -18,6 +18,7 @@ import qualified Network.AWS.SES        as SES
 
 data Config = Config
     { cFrom :: !T.Text
+    , cReplyTo :: !(Maybe T.Text)
     }
 
 data Handle = Handle
@@ -37,11 +38,13 @@ sendEmail
     -> T.Text  -- ^ Body
     -> IO ()
 sendEmail Handle {..} to subject body =
-    Aws.runResourceT $ Aws.runAWS hAwsEnv $ void $ Aws.send $ SES.sendEmail
-        (cFrom hConfig)
-        (SES.destination & SES.dToAddresses .~ [to])
-        (SES.message
-            (SES.content subject)
-            (SES.body & SES.bText .~ Just (SES.content body)))
+    Aws.runResourceT $ Aws.runAWS hAwsEnv $ void $ Aws.send $
+        maybe id (\replyTo -> SES.seReplyToAddresses .~ [replyTo]) (cReplyTo hConfig) $
+            SES.sendEmail
+                (cFrom hConfig)
+                (SES.destination & SES.dToAddresses .~ [to])
+                (SES.message
+                    (SES.content subject)
+                    (SES.body & SES.bText .~ Just (SES.content body)))
 
 $(A.deriveJSON A.options ''Config)

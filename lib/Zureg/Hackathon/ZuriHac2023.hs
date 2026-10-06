@@ -4,7 +4,7 @@ module Zureg.Hackathon.ZuriHac2023
     ) where
 
 import qualified Data.Text                           as T
-import           System.Environment                  (getEnv)
+import           System.Environment                  (getEnv, lookupEnv)
 import qualified Text.Blaze.Html5                    as H
 import qualified Zureg.Database                      as Database
 import           Zureg.Hackathon.Interface           (Hackathon)
@@ -20,6 +20,7 @@ newHackathon :: IO (Hackathon RegisterInfo)
 newHackathon = do
     scannerSecret   <- T.pack <$> getEnv "ZUREG_SCANNER_SECRET"
     email           <- T.pack <$> getEnv "ZUREG_EMAIL"
+    replyToEmail    <- fmap T.pack <$> lookupEnv "ZUREG_EMAIL_REPLY_TO"
     captcha         <- HCaptcha.configFromEnv >>= HCaptcha.new
 
     discord <- Discord.configFromEnv
@@ -44,6 +45,7 @@ newHackathon = do
         , Hackathon.databaseConfig = Database.defaultConfig
         , Hackathon.sendEmailConfig = SendEmail.Config
             { SendEmail.cFrom = "ZuriHac Registration Bot <" <> email <> ">"
+            , SendEmail.cReplyTo = replyToEmail
             }
         , Hackathon.captcha = captcha
         , Hackathon.scannerSecret = scannerSecret

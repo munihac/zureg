@@ -1,0 +1,69 @@
+Hello {{info.name}},
+
+MuniHac 2026 is only a few weeks away, and we're excited to have you all in Munich
+again!
+
+Here's a few updates from our side as well as some organizational stuff:
+
+# IMPORTANT: Please confirm (or cancel) your registration here:
+
+    https://registration.munihac.de/ticket?uuid={{uuid}}
+
+    By confirming your registration, we have a better overview over how many
+    people will actually be attending, which helps us plan ahead for things like
+    food and rooms. Confirming your registration will give you access to your
+    ticket.
+    In case you won't be able to attend, we ask you to cancel your registration.
+
+# Venue
+
+    MuniHac 2026 will take place at the TNG Technology Consulting offices,
+    Beta-Straße 13a, 85774 Unterföhring. The venue can be reached by S-Bahn
+    and Bus.
+
+    Google Maps: https://www.google.com/maps/place/?q=TNG+Technology+Consulting+GmbH&ftid=0x479e74c74cfca785:0xb774bd7390f72580
+    Open Street Map: https://www.openstreetmap.org/?mlat=48.186007&mlon=11.654246#map=19/48.186007/11.654246
+
+    Please use the side entrance to the building (Beta-Straße 13a).
+
+# Schedule
+
+    https://munihac.de/2026.html#schedule
+
+    MuniHac will start on Friday, October 9th at 9:00, and end around 17:00
+    on Sunday, October 11th.
+
+    You can find the preliminary schedule on the MuniHac website. There might be
+    some updates in the next weeks, so be sure to check again before the event!
+
+    You can check in at the registration desk on Friday between 8:30–11:30, or
+    Saturday between 9:00–10:30. If you plan to arrive outside these time
+    windows for some reason, please let us know in advance (via email or Slack).
+
+# Keynotes, talks and workshops
+
+    While the main focus of MuniHac is in getting together and hacking on
+    projects, we also want to provide a line-up of talks and workshops:
+
+    * Three keynotes by Manuel Chakravarty, Ziyang Liu and Dominik Schrempf
+    * As always, there will be a Beginners Workshop that teaches the basics of
+      Haskell
+    * And more talks!
+
+    The full list can be found on https://munihac.de/2026.html#programme, we'll
+    update the page regularly.
+
+# Communication
+
+    As in the last years, you can use our Slack space for communicating with
+    other attendees. If you haven't done yet, please subscribe to the
+    #munihac-2026 channel for announcements! If you don't have an account yet,
+    you can create one via this invite link:
+
+    https://join.slack.com/t/munihac/shared_invite/zt-2i1v0wxev-M_DkjOxBpuX2B5CfPk8Nlg
+
+
+We're looking forward to seeing you in Munich!
+
+On behalf of the MuniHac organisers,
+    Franz

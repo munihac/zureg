@@ -16,6 +16,7 @@ import qualified Zureg.Hackathon.MuniHac2020 as MuniHac2020
 import qualified Zureg.Hackathon.MuniHac2022 as MuniHac2022
 import qualified Zureg.Hackathon.MuniHac2024 as MuniHac2024
 import qualified Zureg.Hackathon.MuniHac2025 as MuniHac2025
+import qualified Zureg.Hackathon.MuniHac2026 as MuniHac2026
 import qualified Zureg.Hackathon.ZuriHac2021 as ZuriHac2021
 import qualified Zureg.Hackathon.ZuriHac2022 as ZuriHac2022
 import qualified Zureg.Hackathon.ZuriHac2023 as ZuriHac2023
@@ -45,6 +46,7 @@ hackathons =
     , ("munihac2022", SomeHackathon <$> MuniHac2022.newHackathon)
     , ("munihac2024", SomeHackathon <$> MuniHac2024.newHackathon)
     , ("munihac2025", SomeHackathon <$> MuniHac2025.newHackathon)
+    , ("munihac2026", SomeHackathon <$> MuniHac2026.newHackathon)
     , ("zurihac2021", SomeHackathon <$> ZuriHac2021.newHackathon)
     , ("zurihac2022", SomeHackathon <$> ZuriHac2022.newHackathon)
     , ("zurihac2023", SomeHackathon <$> ZuriHac2023.newHackathon)
